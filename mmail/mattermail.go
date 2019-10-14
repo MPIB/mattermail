@@ -10,7 +10,6 @@ import (
 )
 
 const (
-	maxMattermostAttachments = 5
 	maxMattermostPostSize    = 4000
 	tryAgainTime             = 30
 	waitMessageTimeout       = 60
@@ -174,8 +173,8 @@ func createMattermostPost(msg *MailMessage, cfg *model.Profile, log Logger, getC
 
 	// Attachments
 	for _, a := range msg.Attachments {
-		if len(mP.attachments) >= maxMattermostAttachments {
-			log.Debugf("Max number of attachments '%v'\n", maxMattermostAttachments)
+		if len(mP.attachments) >= *cfg.MaxMattermostAttachments {
+			log.Debugf("Max number of attachments '%v'\n", *cfg.MaxMattermostAttachments)
 			break
 		}
 		mP.attachments = append(mP.attachments, a)
