@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	defaultMaxMattermostAttachments = 5
+	defaultMaxAttachments = 5
 	defaultMailTemplate      = ":incoming_envelope: _From: **{{.From}}**_\n>_{{.Subject}}_\n\n{{.Message}}"
 	defaultLinesToPreview    = 10
 	defaultRedirectBySubject = true
@@ -21,7 +21,7 @@ const (
 type Profile struct {
 	Name              string
 	Channels          []string
-	MaxMattermostAttachments *int `json:",omitempty"`
+	MaxAttachments *int `json:",omitempty"`
 	MailTemplate      *string `json:",omitempty"`
 	LinesToPreview    *int    `json:",omitempty"`
 	RedirectBySubject *bool   `json:",omitempty"`
@@ -35,7 +35,7 @@ type Profile struct {
 // NewProfile creates new Profile with default values
 func NewProfile() *Profile {
 	profile := &Profile{
-		MaxMattermostAttachments: new(int),
+		MaxAttachments:    new(int),
 		MailTemplate:      new(string),
 		LinesToPreview:    new(int),
 		RedirectBySubject: new(bool),
@@ -44,7 +44,7 @@ func NewProfile() *Profile {
 		Email:             NewEmail(),
 		Mattermost:        NewMattermost(),
 	}
-	*profile.MaxMattermostAttachments = defaultMaxMattermostAttachments
+	*profile.MaxAttachments = defaultMaxAttachments
 	*profile.MailTemplate = defaultMailTemplate
 	*profile.LinesToPreview = defaultLinesToPreview
 	*profile.RedirectBySubject = defaultRedirectBySubject
@@ -64,8 +64,8 @@ func (c *Profile) Validate() error {
 		return errors.New("Field 'Channels' need to set at least one channel or user for destination")
 	}
 
-	if c.MaxMattermostAttachments != nil && *c.MaxMattermostAttachments <= 0 {
-		return errors.New("Field 'MaxMattermostAttachments' must be greater than 0.")
+	if c.MaxAttachments != nil && *c.MaxAttachments <= 0 {
+		return errors.New("Field 'MaxAttachments' must be greater than 0.")
 	}
 
 	for _, channel := range c.Channels {

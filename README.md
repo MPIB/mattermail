@@ -78,6 +78,7 @@ You can set multiple profiles using different names
 | Mattermost        | object  |         | :white_check_mark: | Configuration of Mattermost [(details)](https://github.com/rodcorsi/mattermail#mattermost)                |
 | MailTemplate      | string  |         |                    | Template used to format message to post [(details)](https://github.com/rodcorsi/mattermail#mailtemplate)  |
 | LinesToPreview    |   int   | 10      |                    | Number of email lines that will be posted                                                                 |
+| MaxAttachments    |   int   |  5      |                    | Maximal number of attachments send with one email                                                         |
 | Attachment        | boolean | true    |                    | Inform if attachments will be posted in Mattermost                                                        |
 | Disabled          | boolean | false   |                    | Disable this profile                                                                                      |
 | RedirectBySubject | boolean | true    |                    | Inform if redirect email by subject [(details)](https://github.com/rodcorsi/mattermail#redirectbysubject) |

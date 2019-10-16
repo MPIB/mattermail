@@ -5,7 +5,6 @@
 		{
 			"Name": "Orders",
 			"Channels": ["#orders"],
-			"MaxMattermostAttachments": 5,
 
 			"Email": {
 				"ImapServer": "imap.example.com:143",
